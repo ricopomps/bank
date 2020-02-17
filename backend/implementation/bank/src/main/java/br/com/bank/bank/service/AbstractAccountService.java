@@ -7,6 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.bank.bank.model.AbstractAccount;
+import br.com.bank.bank.model.Account;
 import br.com.bank.bank.repository.AbstractAccountRepository;
 
 @Service
@@ -17,8 +18,8 @@ public class AbstractAccountService {
 		this.abstractAccountRepository = abstractAccountRepository;
 	}
 
-	public AbstractAccount create(AbstractAccount abstractAccount) {
-		return abstractAccountRepository.save(abstractAccount);
+	public AbstractAccount create(Account account) {
+		return abstractAccountRepository.save(account);
 	}
 
 	public List findAll() {

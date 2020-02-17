@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bank.bank.exception.ResourceNotFoundException;
 import br.com.bank.bank.model.AbstractAccount;
+import br.com.bank.bank.model.Account;
 import br.com.bank.bank.service.AbstractAccountService;
 
 @RestController()
@@ -26,8 +27,8 @@ public class AbstractAccountController {
 	}
 
 	@PostMapping
-	public AbstractAccount create(@RequestBody AbstractAccount abstractAccount) {
-		return abstractAccountService.create(abstractAccount);
+	public AbstractAccount create(@RequestBody Account account) {
+		return abstractAccountService.create(account);
 	}
 
 	@GetMapping
@@ -36,9 +37,9 @@ public class AbstractAccountController {
 	}
 
 	@GetMapping(path = { "/{id}" })
-	public ResponseEntity findById(@PathVariable("id") long id, @RequestBody AbstractAccount abstractAccount) {
+	public ResponseEntity findById(@PathVariable("id") long id, @RequestBody Account account) {
 		try {
-			AbstractAccount updateAbstractAccount = abstractAccountService.update(id, abstractAccount);
+			AbstractAccount updateAbstractAccount = abstractAccountService.update(id, account);
 			return ResponseEntity.ok().body(updateAbstractAccount);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.notFound().build();

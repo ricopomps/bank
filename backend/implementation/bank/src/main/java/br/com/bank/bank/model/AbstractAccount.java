@@ -11,6 +11,7 @@ import org.springframework.data.domain.Example;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import br.com.bank.bank.repository.AbstractAccountRepository;
+
 @Entity
 public abstract class AbstractAccount {
 
@@ -24,6 +25,10 @@ public abstract class AbstractAccount {
 
 	private String number;
 	private double balance;
+
+	public AbstractAccount() {
+
+	}
 
 	public String getNumber() {
 		return number;
@@ -39,6 +44,22 @@ public abstract class AbstractAccount {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(long clientId) {
+		this.clientId = clientId;
 	}
 
 //	public boolean debit(double value) {
